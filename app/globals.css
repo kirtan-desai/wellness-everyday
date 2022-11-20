@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 /* Box sizing rules */
 *,
 *::before,
@@ -31,10 +33,11 @@ html:focus-within {
 }
 
 /* Set core body defaults */
-body {
+body{
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
+  line-height: 1.3;
+  font-family: 'Inter', sans-serif;
 }
 
 /* A elements that don't have a class get default styles */
@@ -80,3 +83,4 @@ a, button{
     scroll-behavior: auto !important;
   }
 }
+
