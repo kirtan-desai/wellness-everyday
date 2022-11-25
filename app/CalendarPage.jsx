@@ -3,6 +3,7 @@
 import { differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
 import styles from "./page.module.css";
+import "./Calendar.css"; //overriding default react-calendar css
 
 export default function CalendarPage() {
   function isSameDay(a, b) {
