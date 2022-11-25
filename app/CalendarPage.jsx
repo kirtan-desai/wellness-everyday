@@ -1,5 +1,6 @@
 "use client";
 
+import { signOut } from "next-auth/react";
 import { differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
 import styles from "./page.module.css";
@@ -33,6 +34,10 @@ export default function CalendarPage() {
   }
   return (
     <div>
+      <button onClick={() => signOut()} className={styles.start}>
+        Logout
+      </button>
+
       <div className={styles["calendar-container"]}>
         <div className={styles.navbar}>
           <p>Filter days by mood</p>
