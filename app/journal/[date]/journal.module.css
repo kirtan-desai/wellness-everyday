@@ -32,6 +32,10 @@
     outline: none;
 }
 
+.moods {
+    display: flex;
+}
+
 .moods button {
     background-color: transparent;
 }
