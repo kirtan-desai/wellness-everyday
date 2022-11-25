@@ -1,12 +1,9 @@
 import "./globals.css";
-import Provider from "./SessionProvider";
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={true && "yellowbg"}>
-                <Provider>{children}</Provider>
-            </body>
+            <body>{children}</body>
         </html>
     );
 }
