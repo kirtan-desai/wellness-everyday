@@ -1,4 +1,4 @@
-.container{
+.container {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,14 +8,14 @@
   background-size: calc(400px + 17vw + 12vh);
 }
 
-.section{
-  height:85%;
+.section {
+  height: 85%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.welcome{
+.welcome {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,21 +25,20 @@
   padding-bottom: 15vh;
 }
 
-
-.title{
+.title {
   font-size: calc(12px + 3vw + 3vh);
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 700;
   color: rgba(255, 143, 40, 1);
 }
 
-.subtitle{
+.subtitle {
   font-size: calc(10px + 0.4vw + 0.6vh);
   width: 70%;
   padding-left: 10px;
 }
 
-.start{
+.start {
   margin-left: 10px;
   font-size: calc(10px + 0.4vw + 0.6vh);
   width: fit-content;
@@ -48,29 +47,42 @@
   background-color: rgba(255, 214, 0, 0.72);
 }
 
-.footer{
+.footer {
   background-color: rgba(255, 251, 232, 1);
   height: 15%;
 }
 
 @media (width <= 1020px) {
-  .container{
+  .container {
     background-image: url("../public/mobile-hero.svg");
     background-position: right -140px top 90%;
   }
 }
 
 @media (width <= 500px) {
-  .container{
+  .container {
     background-image: url("../public/mobile-hero.svg");
     background-position: right -180px top 90%;
   }
 
-  .subtitle{
+  .subtitle {
     font-weight: 500;
   }
 
-  .start{
+  .start {
     background-color: rgba(255, 213, 0, 0.854);
   }
+}
+
+/* Calendar */
+
+
+.calendar-container {
+  border-radius: 20px;
+  max-width: 500px;
+  max-height: 50vh;
+}
+
+.mood {
+  padding-top: 5px;
 }
