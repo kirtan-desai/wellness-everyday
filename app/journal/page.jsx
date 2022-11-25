@@ -15,7 +15,44 @@ export default function LoginPage() {
             <div>
                 <p>How I felt today</p>
                 <div className={styles.bottom}>
-                    <div>mood buttons</div>
+                    <div className={styles.moods}>
+                        <label for="happy">😊</label>
+                        <input
+                            type="radio"
+                            name="mood"
+                            value="happy"
+                            id="happy"
+                        ></input>
+                        <label for="sad">🙁</label>
+                        <input
+                            type="radio"
+                            name="mood"
+                            value="sad"
+                            id="sad"
+                        ></input>
+                        <label for="stressed">😥</label>
+                        <input
+                            type="radio"
+                            name="mood"
+                            value="stressed"
+                            id="stressed"
+                        ></input>
+                        <label for="neutral">👍</label>
+                        <input
+                            type="radio"
+                            name="mood"
+                            value="neutral"
+                            id="neutral"
+                        ></input>
+                        <label for="hopeful">🤩</label>
+                        <input
+                            type="radio"
+                            name="mood"
+                            value="hopeful"
+                            id="hopeful"
+                        ></input>
+                        {/* https://www.youtube.com/watch?v=KOci5GrL1pw */}
+                    </div>
                     <button className={styles.save}>Save</button>
                 </div>
             </div>
