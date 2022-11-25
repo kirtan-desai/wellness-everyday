@@ -4,7 +4,7 @@ import { signOut } from "next-auth/react";
 import { differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
 import styles from "./page.module.css";
-import "./Calendar.css";
+import "./Calendar.css"; //overriding default react-calendar css
 
 function isSameDay(a, b) {
     return differenceInCalendarDays(a, b) !== 0;
