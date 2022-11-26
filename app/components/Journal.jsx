@@ -1,8 +1,7 @@
-import { unstable_getServerSession } from "next-auth/next";
+"use client"
+
 import { redirect } from "next/navigation";
-import { collection, getDoc, doc } from "firebase/firestore";
-import styles from "./journal.module.css";
-import db from "../../config/db";
+import styles from "./Journal.module.css";
 import Link from "next/link";
 
 const moods = {
@@ -13,17 +12,13 @@ const moods = {
     hopeful: "🤩",
 };
 
-export default async function Journal({ params }) {
-    const session = await unstable_getServerSession();
-
-    !session && redirect("/");
-
+export default function Journal() {
+    
     //TODO: Make GET req to get journal entry using session.user.email and params.date
-    const docSnap = await getDoc(
-        doc(db, "users", "kirtands44@gmail.com", "journals", "2022-08-23")
-    );
-    const data = docSnap.data();
-    console.log();
+    // const docSnap = await getDoc(
+    //     doc(db, "users", "kirtands44@gmail.com", "journals", "2022-08-23")
+    // );
+    // const data = docSnap.data();
 
     return (
         <>
@@ -39,7 +34,6 @@ export default async function Journal({ params }) {
                 <div className={styles.textwrapper}>
                     <p>Notable memories of today</p>
                     <textarea
-                        defaultValue={params.date}
                         className={styles.textarea}
                     ></textarea>
                 </div>

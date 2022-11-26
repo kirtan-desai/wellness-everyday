@@ -1,0 +1,55 @@
+.modal {
+    width: 70vw;
+    height: 80vh;
+    background-color: #fff4b8;
+    border-radius: 20px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 18px;
+}
+
+.heading {
+    color: #ed6604;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.textwrapper {
+    height: 70%;
+}
+
+.textarea {
+    border-radius: 10px;
+    resize: none;
+    width: 100%;
+    height: 90%;
+    margin: 10px 0;
+}
+
+.textarea:focus {
+    outline: none;
+}
+
+.moods {
+    display: flex;
+}
+
+.moods button {
+    background-color: transparent;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save {
+    color: white;
+    font-size: bold;
+    background-color: #ff862f;
+    border-radius: 8px;
+    font-size: 22px;
+    padding: 5px 10px;
+}
