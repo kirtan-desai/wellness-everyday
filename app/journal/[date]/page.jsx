@@ -1,6 +1,6 @@
 import { unstable_getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDoc, doc } from "firebase/firestore";
 import styles from "./journal.module.css";
 import db from "../../config/db";
 
@@ -17,13 +17,10 @@ export default async function Journal({ params }) {
 
     !session && redirect("/");
 
-    const querySnapshot = await getDocs(collection(db, "users"));
-    querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-    });
-
-    // console.log(session)
-    //TODO: Make GET req to get journal entry using session.user.email and params.data
+    //TODO: Make GET req to get journal entry using session.user.email and params.date
+    const docSnap = await getDoc(doc(db, "users", "kirtands44@gmail.com", "journals", "2022-08-23"));
+    const data = docSnap.data()
+    console.log()
 
     return (
         <form className={styles.modal}>
