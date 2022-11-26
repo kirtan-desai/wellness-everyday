@@ -1,4 +1,8 @@
+import { unstable_getServerSession } from "next-auth/next";
+import { redirect } from "next/navigation";
+import { collection, getDocs } from "firebase/firestore";
 import styles from "./journal.module.css";
+import db from "../../config/db";
 
 const moods = {
     happy: "😊",
@@ -8,7 +12,19 @@ const moods = {
     hopeful: "🤩",
 };
 
-export default function Journal({ params }) {
+export default async function Journal({ params }) {
+    const session = await unstable_getServerSession();
+
+    !session && redirect("/");
+
+    const querySnapshot = await getDocs(collection(db, "users"));
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+    });
+
+    // console.log(session)
+    //TODO: Make GET req to get journal entry using session.user.email and params.data
+
     return (
         <form className={styles.modal}>
             <div>
@@ -18,7 +34,10 @@ export default function Journal({ params }) {
             </div>
             <div className={styles.textwrapper}>
                 <p>Notable memories of today</p>
-                <textarea value={params.date} className={styles.textarea}></textarea>
+                <textarea
+                    defaultValue={params.date}
+                    className={styles.textarea}
+                ></textarea>
             </div>
             <div>
                 <p>How I felt today</p>
