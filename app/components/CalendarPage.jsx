@@ -5,7 +5,6 @@ import { differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
 import styles from "./CalendarPage.module.css";
 import "./Calendar.css"; //overriding default react-calendar css
-import { useRouter, redirect } from "next/navigation";
 import { setDate } from "date-fns/esm";
 
 function isSameDay(a, b) {
@@ -28,7 +27,7 @@ function tileDisabled({ date, view }) {
     }
 }
 
-function handleChange(value, isChecked) {
+function onMoodSelect(value, isChecked) {
     console.log(value);
     console.log(isChecked);
 
@@ -43,11 +42,10 @@ function tileClassName({ date, view }) {
     }
 }
 
-export default function CalendarPage({setDate}) {
-    function onChange(value) {
+export default function CalendarPage({ setDate }) {
+    function onClickDay(value) {
         const date = JSON.stringify(new Date(value)).slice(1, 11);
-        setDate(date)
-        // go to journal page
+        setDate(date);
     }
 
     return (
@@ -63,19 +61,19 @@ export default function CalendarPage({setDate}) {
                         <div key={mood}>
                             <label htmlFor={mood}>{moods[mood]}</label>
                             <input
-                                type="checkbox"
+                                type="radio"
                                 name="mood"
                                 value={mood}
                                 id={mood}
                                 onChange={(event) =>
-                                    handleChange({ mood }, event.target.checked)
+                                    onMoodSelect({ mood }, event.target.checked)
                                 }
                             ></input>
                         </div>
                     ))}
                 </div>
                 <Calendar
-                    onClickDay={onChange}
+                    onClickDay={onClickDay}
                     tileDisabled={tileDisabled}
                     tileContent={() => <div className={styles.mood}>emoji</div>}
                     tileClassName={tileClassName}

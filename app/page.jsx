@@ -1,7 +1,6 @@
 import { unstable_getServerSession } from "next-auth/next";
 import LandingPage from "./components/LandingPage";
 import db from "./config/db";
-import Test from "./Test";
 import LoggedIn from "./components/LoggedIn";
 
 export default async function Home() {
@@ -17,4 +16,3 @@ export default async function Home() {
     }
 }
 
-// make calendar responsive below 555 px

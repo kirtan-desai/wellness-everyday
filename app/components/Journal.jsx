@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { redirect } from "next/navigation";
 import styles from "./Journal.module.css";
@@ -12,8 +12,7 @@ const moods = {
     hopeful: "🤩",
 };
 
-export default function Journal() {
-    
+export default function Journal({ setDate }) {
     //TODO: Make GET req to get journal entry using session.user.email and params.date
     // const docSnap = await getDoc(
     //     doc(db, "users", "kirtands44@gmail.com", "journals", "2022-08-23")
@@ -22,9 +21,8 @@ export default function Journal() {
 
     return (
         <>
-            <Link href="/">
-                <button>Back to Calendar</button>
-            </Link>
+            <button onClick={() => setDate(undefined)}>Back to Calendar</button>
+
             <form className={styles.modal}>
                 <div>
                     <p className={styles.heading}>
@@ -33,9 +31,7 @@ export default function Journal() {
                 </div>
                 <div className={styles.textwrapper}>
                     <p>Notable memories of today</p>
-                    <textarea
-                        className={styles.textarea}
-                    ></textarea>
+                    <textarea className={styles.textarea}></textarea>
                 </div>
                 <div>
                     <p>How I felt today</p>

@@ -12,7 +12,7 @@ export default function LoggedIn() {
     if (date) {
         // const entry = entries[date];
         // return <Journal date=date entry=entry />;
-        return <Journal />;
+        return <Journal setDate={setDate} />;
     } else {
         // return <CalendarPage entries=entries setDate=setDate/>;
         return <CalendarPage setDate={setDate} />;
