@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 
 function isSameDay(a, b) {
-  return differenceInCalendarDays(a, b) !== 0;
+    return differenceInCalendarDays(a, b) !== 0;
 }
 
 const moods = {
@@ -24,9 +24,9 @@ const moods = {
 const disabledDates = [];
 
 function tileDisabled({ date, view }) {
-  if (view === "month") {
-    return disabledDates.find((dDate) => isSameDay(dDate, date));
-  }
+    if (view === "month") {
+        return disabledDates.find((dDate) => isSameDay(dDate, date));
+    }
 }
 
 function handleChange(value, isChecked) {
@@ -40,9 +40,9 @@ function handleChange(value, isChecked) {
 }
 
 function tileClassName({ date, view }) {
-  if (tileDisabled({ date, view })) {
-    return "filtered";
-  }
+    if (tileDisabled({ date, view })) {
+        return "filtered";
+    }
 }
 
 export default function CalendarPage() {

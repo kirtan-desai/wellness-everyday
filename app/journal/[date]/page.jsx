@@ -1,4 +1,8 @@
+import { unstable_getServerSession } from "next-auth/next";
+import { redirect } from "next/navigation";
+import { collection, getDocs } from "firebase/firestore";
 import styles from "./journal.module.css";
+import db from "../../config/db";
 import Link from "next/link";
 
 const moods = {
@@ -9,7 +13,19 @@ const moods = {
   hopeful: "🤩",
 };
 
-export default function Journal({ params }) {
+export default async function Journal({ params }) {
+  const session = await unstable_getServerSession();
+
+  !session && redirect("/");
+
+  const querySnapshot = await getDocs(collection(db, "users"));
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+  });
+
+  // console.log(session)
+  //TODO: Make GET req to get journal entry using session.user.email and params.data
+
   return (
     <>
       <Link href="/">
