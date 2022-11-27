@@ -1,8 +1,6 @@
 "use client";
 
-import { redirect } from "next/navigation";
 import styles from "./Journal.module.css";
-import Link from "next/link";
 
 const moods = {
     happy: "😊",
@@ -12,13 +10,7 @@ const moods = {
     hopeful: "🤩",
 };
 
-export default function Journal({ setDate }) {
-    //TODO: Make GET req to get journal entry using session.user.email and params.date
-    // const docSnap = await getDoc(
-    //     doc(db, "users", "kirtands44@gmail.com", "journals", "2022-08-23")
-    // );
-    // const data = docSnap.data();
-
+export default function Journal({ entry, setDate }) {
     return (
         <>
             <button onClick={() => setDate(undefined)}>Back to Calendar</button>

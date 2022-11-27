@@ -30,10 +30,6 @@ function tileDisabled({ date, view }) {
 function onMoodSelect(value, isChecked) {
     console.log(value);
     console.log(isChecked);
-
-    //fetch all dates for user in the start and then filter through those dates?
-    //get users->email->journals=>dates=>{mood, entry}
-    //journals page entry
 }
 
 function tileClassName({ date, view }) {
@@ -42,7 +38,7 @@ function tileClassName({ date, view }) {
     }
 }
 
-export default function CalendarPage({ setDate }) {
+export default function CalendarPage({ entries, setDate }) {
     function onClickDay(value) {
         const date = JSON.stringify(new Date(value)).slice(1, 11);
         setDate(date);
