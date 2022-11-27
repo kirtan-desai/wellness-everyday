@@ -5,7 +5,6 @@ import CalendarPage from "./CalendarPage";
 import Journal from "./Journal";
 
 export default function LoggedIn({ entries }) {
-
     /*
         date is used as state so when user selects a date in CalendarPage,
         using setDate, the component of the date state which is LoggedIn,
@@ -16,11 +15,9 @@ export default function LoggedIn({ entries }) {
     */
     const [date, setDate] = useState();
 
-    if (date) {
-        const entry = entries[date];
-        console.log(entry)
-        return <Journal entry={entry} setDate={setDate} />;
-    } else {
-        return <CalendarPage entries={entries} setDate={setDate} />;
-    }
+    return date ? (
+        <Journal entry={entries[date]} setDate={setDate} />
+    ) : (
+        <CalendarPage entries={entries} setDate={setDate} />
+    );
 }
