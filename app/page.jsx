@@ -16,9 +16,9 @@ const getData = async (email) => {
 
 export default async function Home() {
     const session = await unstable_getServerSession();
-    if (!session) {
-        return <LandingPage />;
-    } else {
-        return <LoggedIn entries={await getData(session.user.email)} />;
-    }
+    return session ? (
+        <LoggedIn entries={await getData(session.user.email)} />
+    ) : (
+        <LandingPage />
+    );
 }
