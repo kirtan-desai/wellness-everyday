@@ -1,9 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./Journal.module.css";
 import MoodSelector from "./MoodSelector";
 
-export default function Journal({ entry, setDate }) {
+export default function Journal({ journal, setDate }) {
+    const [mood, setMood] = useState(journal?.mood);
+    const [entry, setEntry] = useState(journal?.entry)
+
+    const onMoodSelect = (selectedMood) => {
+        setMood(selectedMood);
+    };
+
     return (
         <>
             <button onClick={() => setDate(undefined)}>Back to Calendar</button>
@@ -19,9 +27,9 @@ export default function Journal({ entry, setDate }) {
                     <p>How I felt today</p>
                     <div className={styles.bottom}>
                         <div className={styles.moods}>
-                            <MoodSelector />
+                            <MoodSelector onMoodSelect={onMoodSelect} />
                         </div>
-                        <button className={styles.save}>Save</button>
+                        <button disabled={true} className={styles.save}>Save</button>
                     </div>
                 </div>
             </form>

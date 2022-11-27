@@ -16,7 +16,7 @@ export default function LoggedIn({ entries }) {
     const [date, setDate] = useState();
 
     return date ? (
-        <Journal entry={entries[date]} setDate={setDate} />
+        <Journal journal={entries[date]} setDate={setDate} />
     ) : (
         <CalendarPage entries={entries} setDate={setDate} />
     );

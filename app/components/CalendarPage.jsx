@@ -20,9 +20,8 @@ function tileDisabled({ date, view }) {
     }
 }
 
-function onMoodSelect(value, isChecked) {
-    console.log(value);
-    console.log(isChecked);
+function onMoodSelect(mood) {
+    console.log(mood);
 }
 
 function tileClassName({ date, view }) {

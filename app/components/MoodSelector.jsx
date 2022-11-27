@@ -7,9 +7,6 @@ const moods = {
 };
 
 export default function MoodSelector({ onMoodSelect }) {
-    const onChange = (event) =>
-        onMoodSelect(event.target.value, event.target.checked);
-
     return Object.keys(moods).map((mood) => (
         <div key={mood}>
             <label htmlFor={mood}>{moods[mood]}</label>
@@ -18,7 +15,7 @@ export default function MoodSelector({ onMoodSelect }) {
                 name="mood"
                 value={mood}
                 id={mood}
-                onChange={onMoodSelect && onChange}
+                onChange={(event) => onMoodSelect(event.target.value)}
             ></input>
         </div>
     ));
