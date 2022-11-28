@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import CalendarPage from "./CalendarPage";
-import Journal from "./Journal";
+import JournalPage from "./JournalPage";
 
-export default function LoggedIn({ entries }) {
+export default function LoggedIn({ entries, user }) {
     /*
         date is used as state so when user selects a date in CalendarPage,
         using setDate, the component of the date state which is LoggedIn,
@@ -16,7 +16,12 @@ export default function LoggedIn({ entries }) {
     const [date, setDate] = useState();
 
     return date ? (
-        <Journal journal={entries[date]} setDate={setDate} />
+        <JournalPage
+            journal={entries[date]}
+            setDate={setDate}
+            user={user}
+            date={date}
+        />
     ) : (
         <CalendarPage entries={entries} setDate={setDate} />
     );

@@ -1,3 +1,5 @@
+//Cannot use db in client components since Next.js 
+//doesn't allow env variables to be loaded in client components
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 

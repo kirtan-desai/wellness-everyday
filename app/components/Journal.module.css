@@ -48,8 +48,12 @@
 .save {
     color: white;
     font-size: bold;
-    background-color: #ff862f;
+    background-color: grey;
     border-radius: 8px;
     font-size: 22px;
     padding: 5px 10px;
+}
+
+.saveActive {
+    background-color: #ff862f;
 }
