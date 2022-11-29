@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CalendarPage from "./CalendarPage";
-import JournalPage from "./JournalPage";
+import JournalPage from "./Journal";
 
 export default function LoggedIn({ entries, user }) {
     /*
