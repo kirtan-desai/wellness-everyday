@@ -12,8 +12,8 @@
   justify-content: center;
 }
 
-.filtered {
-  color: #796f6f;
+.disabled {
+  color: #666769;
 }
 
 .react-calendar--doubleView {
@@ -84,7 +84,7 @@
   color: #008241;
 } */
 .react-calendar__month-view__days__day--neighboringMonth {
-  color: #796f6f;
+  color: #4d4949d1;
 }
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,

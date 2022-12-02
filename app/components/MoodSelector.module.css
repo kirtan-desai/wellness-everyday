@@ -1,0 +1,26 @@
+.moodInput {
+  cursor: pointer;
+  display: none;
+}
+
+.emoji {
+  display: block;
+  font-size: xx-large;
+  padding-right: 25px;
+  cursor: pointer;
+}
+
+.emojiCal {
+  display: block;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.emoji:hover,
+.emojiCal:hover {
+  text-shadow: 2px 2px 9px rgb(234, 188, 61);
+}
+
+.moodBar input:checked + label {
+  text-shadow: 2px 2px 9px rgb(234, 188, 61);
+}
