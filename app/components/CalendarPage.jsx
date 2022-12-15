@@ -49,11 +49,9 @@ export default function CalendarPage({ entries, setDate }) {
 
   return (
     <div className={styles.modal}>
-      <div className={styles.logoutContainer}>
-        <button onClick={() => signOut()} className={styles.logout}>
-          Logout
-        </button>
-      </div>
+      <button onClick={() => signOut()} className={styles.logout}>
+        Logout
+      </button>
       <div className={styles["calendar-container"]}>
         <div className={styles.navbar}>
           <p>Filter days by mood</p>
