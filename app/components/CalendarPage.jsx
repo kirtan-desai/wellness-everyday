@@ -4,7 +4,7 @@ import { signOut } from "next-auth/react";
 import { differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
 import styles from "./CalendarPage.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Calendar.css"; //overriding default react-calendar css
 import MoodSelector from "./MoodSelector";
 
@@ -12,6 +12,13 @@ export default function CalendarPage({ entries, setDate }) {
   // date : {mood, entry}
 
   const [mood, setMood] = useState();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+  });
+
+  const isMobile = windowWidth <= 600;
 
   function onMoodSelect(selectedMood) {
     setMood(selectedMood);
@@ -54,15 +61,26 @@ export default function CalendarPage({ entries, setDate }) {
       </button>
       <div className={styles["calendar-container"]}>
         <div className={styles.navbar}>
-          <p>Filter days by mood</p>
-          <MoodSelector
-            onMoodSelect={onMoodSelect}
-            moodState={mood}
-            isCalendar={true}
-          />
-          <button onClick={() => setMood(null)} className={styles.clear}>
-            Clear
-          </button>
+          <div className={styles.mobileMoodbarTop}>
+            <p>Filter days by mood</p>
+            {isMobile && (
+              <button onClick={() => setMood(null)} className={styles.clear}>
+                Clear
+              </button>
+            )}
+          </div>
+          <div className={styles.emojibar}>
+            <MoodSelector
+              onMoodSelect={onMoodSelect}
+              moodState={mood}
+              isCalendar={true}
+            />
+          </div>
+          {!isMobile && (
+            <button onClick={() => setMood(null)} className={styles.clear}>
+              Clear
+            </button>
+          )}
         </div>
         <Calendar
           onClickDay={onClickDay}

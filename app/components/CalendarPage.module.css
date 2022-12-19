@@ -8,14 +8,20 @@
 .navbar {
   min-width: 30vw;
   width: inherit;
-  height: 40px;
+  height: fit-content;
   border-radius: 20px;
   padding: 10px 20px;
-  background-color: rgb(248, 238, 238);
+  background-color: aliceblue;
   font-weight: 550;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.emojibar {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
 }
 
 /* calendar container */
@@ -49,4 +55,32 @@
   border-radius: 20px;
   background-color: #fbd723f9;
   padding: 3px 10px;
+}
+
+@media (width <= 600px) {
+  .navbar {
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: transparent;
+  }
+
+  .emojibar {
+    column-gap: 10vw;
+    background-color: aliceblue;
+    padding: 5px 20px;
+    border-radius: 20px;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* width: 30vw; */
+  }
+
+  .mobileMoodbarTop {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+  .clear {
+    background-color: aliceblue;
+  }
 }

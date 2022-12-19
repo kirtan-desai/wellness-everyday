@@ -5,14 +5,14 @@
 
 .emoji {
   display: block;
-  font-size: xx-large;
+  font-size: 32px;
   padding-right: 25px;
   cursor: pointer;
 }
 
 .emojiCal {
   display: block;
-  font-size: larger;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -23,4 +23,13 @@
 
 .moodBar input:checked + label {
   text-shadow: 2px 2px 9px rgb(234, 188, 61);
+}
+
+@media (width <= 600px) {
+  .emoji {
+    font-size: 22px;
+  }
+  .emojiCal {
+    font-size: 22px;
+  }
 }

@@ -65,3 +65,27 @@
   border-radius: 20px;
   transform: translateY(-10px);
 }
+
+@media (width <= 650px) {
+  .heading {
+    font-size: 20px;
+  }
+  .save {
+    font-size: 18px;
+    width: max-content;
+    align-self: flex-end;
+  }
+  .bottom {
+    padding-top: 8px;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+  .textwrapper p {
+    font-size: 16px;
+  }
+
+  .emojiHeading {
+    font-size: 16px;
+    padding-top: 8px;
+  }
+}
