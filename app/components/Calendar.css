@@ -1,9 +1,9 @@
 .react-calendar {
   border-radius: inherit;
-  min-width: 30vw;
+  min-width: 25vw;
   /* min-height: 55vh; */
   width: inherit;
-  background: rgb(248, 238, 238);
+  background: aliceblue;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.125em;
   padding: 10px;
@@ -12,8 +12,8 @@
   justify-content: center;
 }
 
-.filtered {
-  color: #796f6f;
+.disabled {
+  color: #666769;
 }
 
 .react-calendar--doubleView {
@@ -48,19 +48,21 @@
 }
 .react-calendar__navigation {
   display: flex;
-  height: 20px;
-  margin-bottom: 4em;
+  column-gap: 20px;
+  margin-bottom: 1em;
 }
 .react-calendar__navigation button {
-  min-width: 44px;
-  background: none;
+  height: 40px;
+  border-radius: 20px;
+  min-width: 40px;
+  background-color: #ffd600;
 }
 .react-calendar__navigation button:disabled {
   background-color: #f0f0f0;
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-  background-color: #f5f4d7d4;
+  background-color: #cbe2ed;
 }
 .react-calendar__month-view__weekdays {
   text-align: center;
@@ -84,7 +86,7 @@
   color: #008241;
 } */
 .react-calendar__month-view__days__day--neighboringMonth {
-  color: #796f6f;
+  color: #4d4949d1;
 }
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
@@ -107,8 +109,8 @@
 }
 .react-calendar__tile--now {
   /* background: #91cdfb; */
-  text-decoration: 2px solid #04a60f underline;
-  color: #04a60f;
+  text-decoration: 2px solid #cbe2ed underline;
+  color: #e75618;
 }
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
@@ -128,6 +130,20 @@
 .react-calendar__tile--active:enabled:focus {
   border: 2px solid yellow;
 } */
-.react-calendar--selectRange .react-calendar__tile--hover {
-  background-color: #e6e6e6;
+/* .react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #cb8787;
+} */
+
+@media (width <= 600px) {
+  .react-calendar button {
+    width: 0.7vw;
+    height: 7vh;
+  }
+
+  .react-calendar__navigation button {
+    height: 40px;
+    border-radius: 20px;
+    min-width: 40px;
+    background-color: #ffd600;
+  }
 }

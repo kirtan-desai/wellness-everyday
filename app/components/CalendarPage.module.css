@@ -1,33 +1,86 @@
+/* parent container */
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+
+/* mood bar */
+.navbar {
+  min-width: 30vw;
+  width: inherit;
+  height: fit-content;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: aliceblue;
+  font-weight: 550;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emojibar {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+/* calendar container */
 .calendar-container {
-    border-radius: 20px;
-    max-width: 500px;
-    max-height: 50vh;
-    display: flex;
-    justify-content: space-between;
+  border-radius: 20px;
+  max-width: 500px;
+  max-height: 50vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+/* buttons */
+
+.logout {
+  background-color: rgba(255, 255, 255, 0.544);
+  padding: 7px 15px;
+  font-weight: 450;
+  border-radius: 20px;
+  position: fixed;
+  right: 40px;
+  top: 20px;
+}
+
+.logout:hover {
+  background-color: rgba(228, 236, 239, 0.704);
+}
+
+.clear {
+  border-radius: 20px;
+  background-color: #fbd723f9;
+  padding: 3px 10px;
+}
+
+@media (width <= 600px) {
+  .navbar {
     flex-direction: column;
     row-gap: 10px;
-}
+    background-color: transparent;
+  }
 
-.navbar {
-    min-width: 30vw;
-    width: inherit;
-    height: 40px;
+  .emojibar {
+    column-gap: 10vw;
+    background-color: aliceblue;
+    padding: 5px 20px;
     border-radius: 20px;
-    padding: 10px 25px;
-    background-color: rgb(248, 238, 238);
-    font-weight: 550;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* width: 30vw; */
+  }
+
+  .mobileMoodbarTop {
     display: flex;
-    justify-content: space-between;
-}
+    align-items: center;
+    column-gap: 20px;
+  }
 
-.mood {
-    padding-top: 5px;
-}
-
-.ip-container {
-    cursor: pointer;
-}
-
-.check:checked + .ip-container {
-    border: 2px solid blue;
+  .clear {
+    background-color: aliceblue;
+  }
 }
