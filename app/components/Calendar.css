@@ -1,6 +1,6 @@
 .react-calendar {
   border-radius: inherit;
-  min-width: 25vw;
+  /* min-width: 25vw; */
   /* min-height: 55vh; */
   width: inherit;
   background: aliceblue;
@@ -39,8 +39,8 @@
   margin: 0;
   border: 0;
   outline: none;
-  width: 1vw;
-  height: 8vh;
+  width: 20px;
+  height: 60px;
   font-weight: 550;
 }
 .react-calendar button:enabled:hover {
@@ -134,10 +134,14 @@
   background-color: #cb8787;
 } */
 
-@media (width <= 600px) {
+@media (width <= 500px) {
+  * {
+    font-size: 13px;
+  }
+
   .react-calendar button {
-    width: 0.7vw;
-    height: 7vh;
+    width: 15px;
+    height: 45px;
   }
 
   .react-calendar__navigation button {

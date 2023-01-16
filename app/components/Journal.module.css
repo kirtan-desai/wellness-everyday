@@ -1,6 +1,33 @@
+/* 
+modal => backBtn, journal
+journal => heading, textwrapper, mood-save
+mood-save => emojiHeading, bottom
+bottom => moods, save & saveActive
+*/
+
 .modal {
-  width: 70vw;
-  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  row-gap: 10px;
+}
+
+/* modals children */
+.backBtn {
+  background-color: rgba(255, 255, 255, 0.544);
+  padding: 10px 15px;
+  font-weight: 450;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+
+.journal {
+  width: inherit;
+  height: inherit;
   background-color: #fff4b8;
   border-radius: 20px;
   padding: 20px 30px;
@@ -10,6 +37,7 @@
   font-size: 18px;
 }
 
+/*  */
 .heading {
   color: #ed6604;
   font-size: 24px;
@@ -56,14 +84,6 @@
 
 .saveActive {
   background-color: #ff862f;
-}
-
-.backBtn {
-  background-color: rgba(255, 255, 255, 0.544);
-  padding: 10px 15px;
-  font-weight: 450;
-  border-radius: 20px;
-  transform: translateY(-10px);
 }
 
 @media (width <= 650px) {

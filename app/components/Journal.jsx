@@ -24,11 +24,11 @@ export default function JournalPage({ journal, setDate, user, date }) {
   };
 
   return (
-    <>
+    <div className={styles.modal}>
       <button className={styles.backBtn} onClick={() => setDate(null)}>
         Back to Calendar
       </button>
-      <form className={styles.modal} onSubmit={handleSubmit}>
+      <form className={styles.journal} onSubmit={handleSubmit}>
         <p className={styles.heading}>
           {`Welcome to your private space ${user.name} :)`}
         </p>
@@ -42,7 +42,7 @@ export default function JournalPage({ journal, setDate, user, date }) {
             {entry}
           </textarea>
         </div>
-        <div>
+        <div className="mood-save">
           <p className={styles.emojiHeading}>How I felt today</p>
           <div className={styles.bottom}>
             <div className={styles.moods}>
@@ -61,6 +61,6 @@ export default function JournalPage({ journal, setDate, user, date }) {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 }
