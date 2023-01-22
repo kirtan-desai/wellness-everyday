@@ -11,14 +11,22 @@ import MoodSelector from "./MoodSelector";
 export default function CalendarPage({ entries, setDate }) {
   // date : {mood, entry}
 
+  const hasWindow = typeof window !== "undefined";
   const [mood, setMood] = useState();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(
+    hasWindow ? window.innerWidth : null
+  );
 
   useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
-  });
+  }, []);
 
-  const isMobile = windowWidth <= 600;
+  useEffect(() => {
+    if (windowWidth <= 600) {
+      setIsMobile(true);
+    }
+  }, [windowWidth]);
 
   function onMoodSelect(selectedMood) {
     setMood(selectedMood);
