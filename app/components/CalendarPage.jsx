@@ -28,74 +28,72 @@ export default function CalendarPage({ entries, setDate }) {
     }
   }, [windowWidth]);
 
-  function onMoodSelect(selectedMood) {
-    setMood(selectedMood);
-  }
-
-  function onClickDay(value) {
-    const date = JSON.stringify(new Date(value)).slice(1, 11);
-    setDate(date);
-  }
-
-  const enabledDates = Object.keys(entries).filter(
-    (date) => entries[date]["mood"] === mood
-  );
-
-  function tileDisabled({ date, view }) {
-    if (!mood) {
-      return false;
+    function onMoodSelect(selectedMood) {
+        setMood(selectedMood);
     }
 
-    if (view === "month") {
-      return !enabledDates.includes(
-        JSON.stringify(new Date(date)).slice(1, 11)
-      );
-      return !enabledDates.find(
-        (dDate) => differenceInCalendarDays(dDate, date) === 0
-      );
+    function onClickDay(value) {
+        const date = JSON.stringify(new Date(value)).slice(1, 11);
+        setDate(date);
     }
-  }
 
-  function tileClassName({ date, view }) {
-    if (tileDisabled({ date, view })) {
-      return "disabled";
+    const enabledDates = Object.keys(entries).filter(
+        (date) => entries[date]["mood"] === mood
+    );
+
+    function tileDisabled({ date, view }) {
+        if (!mood) {
+            return false;
+        }
+
+        if (view === "month") {
+            return !enabledDates.includes(
+                JSON.stringify(new Date(date)).slice(1, 11)
+            );
+            return !enabledDates.find(
+                (dDate) => differenceInCalendarDays(dDate, date) === 0
+            );
+        }
     }
-  }
 
-  return (
-    <div className={styles.modal}>
-      <button onClick={() => signOut()} className={styles.logout}>
-        Logout
-      </button>
-      <div className={styles["calendar-container"]}>
-        <div className={styles.navbar}>
-          <div className={styles.mobileMoodbarTop}>
-            <p>Filter days by mood</p>
-            {isMobile && (
-              <button onClick={() => setMood(null)} className={styles.clear}>
-                Clear
-              </button>
-            )}
-          </div>
-          <div className={styles.emojibar}>
-            <MoodSelector
-              onMoodSelect={onMoodSelect}
-              moodState={mood}
-              isCalendar={true}
-            />
-          </div>
-          {!isMobile && (
-            <button onClick={() => setMood(null)} className={styles.clear}>
-              Clear
+    function tileClassName({ date, view }) {
+        if (tileDisabled({ date, view })) {
+            return "disabled";
+        }
+    }
+
+    const clearButton = (
+        <button onClick={() => setMood(null)} className={styles.clear}>
+            Clear
+        </button>
+    );
+
+    return (
+        <div className={styles.modal}>
+            <button onClick={() => signOut()} className={styles.logout}>
+                Logout
             </button>
-          )}
+            <div className={styles["calendar-container"]}>
+                <div className={styles.navbar}>
+                    <div className={styles.mobileMoodbarTop}>
+                        <p>Filter days by mood</p>
+                        {isMobile && clearButton}
+                    </div>
+                    <div className={styles.emojibar}>
+                        <MoodSelector
+                            onMoodSelect={onMoodSelect}
+                            moodState={mood}
+                            isCalendar={true}
+                        />
+                    </div>
+                    {!isMobile && clearButton}
+                </div>
+                <Calendar
+                    onClickDay={onClickDay}
+                    tileDisabled={tileDisabled}
+                    tileClassName={tileClassName}
+                />
+            </div>
         </div>
-        <Calendar
-          onClickDay={onClickDay}
-          tileDisabled={tileDisabled}
-          tileClassName={tileClassName}
-        />
-      </div>
-    </div>
-  );
+    );
 }
