@@ -1,7 +1,6 @@
 "use client";
 
 import { signOut } from "next-auth/react";
-import { differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
 import styles from "./CalendarPage.module.css";
 import { useEffect, useState } from "react";
@@ -9,37 +8,33 @@ import "./Calendar.css"; //overriding default react-calendar css
 import MoodSelector from "./MoodSelector";
 
 export default function CalendarPage({ entries, setDate }) {
-  // date : {mood, entry}
+    const [mood, setMood] = useState();
+    const [isMobile, setIsMobile] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(
+        typeof window !== "undefined" ? window.innerWidth : null
+    );
 
-  const hasWindow = typeof window !== "undefined";
-  const [mood, setMood] = useState();
-  const [isMobile, setIsMobile] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(
-    hasWindow ? window.innerWidth : null
-  );
+    useEffect(() => {
+        window.addEventListener("resize", () =>
+            setWindowWidth(window.innerWidth)
+        );
+    }, []);
 
-  useEffect(() => {
-    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
-  }, []);
-
-  useEffect(() => {
-    if (windowWidth <= 600) {
-      setIsMobile(true);
-    }
-  }, [windowWidth]);
-
-    function onMoodSelect(selectedMood) {
-        setMood(selectedMood);
-    }
-
-    function onClickDay(value) {
-        const date = JSON.stringify(new Date(value)).slice(1, 11);
-        setDate(date);
-    }
+    useEffect(() => {
+        setIsMobile(windowWidth <= 600);
+    }, [windowWidth]);
 
     const enabledDates = Object.keys(entries).filter(
         (date) => entries[date]["mood"] === mood
     );
+
+    function dateToString(date) {
+        return JSON.stringify(new Date(date)).slice(1, 11);
+    }
+
+    function onClickDay(date) {
+        setDate(dateToString(date));
+    }
 
     function tileDisabled({ date, view }) {
         if (!mood) {
@@ -47,12 +42,7 @@ export default function CalendarPage({ entries, setDate }) {
         }
 
         if (view === "month") {
-            return !enabledDates.includes(
-                JSON.stringify(new Date(date)).slice(1, 11)
-            );
-            return !enabledDates.find(
-                (dDate) => differenceInCalendarDays(dDate, date) === 0
-            );
+            return !enabledDates.includes(dateToString(date));
         }
     }
 
@@ -81,7 +71,7 @@ export default function CalendarPage({ entries, setDate }) {
                     </div>
                     <div className={styles.emojibar}>
                         <MoodSelector
-                            onMoodSelect={onMoodSelect}
+                            setMood={setMood}
                             moodState={mood}
                             isCalendar={true}
                         />

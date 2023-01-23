@@ -8,7 +8,7 @@ const moods = {
   hopeful: "🤩",
 };
 // class emoji1 for mood1
-export default function MoodSelector({ onMoodSelect, isCalendar, moodState }) {
+export default function MoodSelector({ setMood, isCalendar, moodState }) {
   return Object.keys(moods).map((mood) => (
     <div className={styles.moodBar} key={mood}>
       <input
@@ -18,7 +18,7 @@ export default function MoodSelector({ onMoodSelect, isCalendar, moodState }) {
         value={mood}
         id={mood}
         checked={mood == moodState}
-        onChange={(event) => onMoodSelect(event.target.value)}
+        onChange={(event) => setMood(event.target.value)}
       ></input>
       <label
         className={isCalendar ? styles.emojiCal : styles.emoji}
